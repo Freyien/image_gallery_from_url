@@ -9,7 +9,6 @@ import 'package:image_gallery_from_url/core/ui/utils/toast.dart';
 import 'package:image_gallery_from_url/core/ui/widgets/circle_icon_button.dart';
 import 'package:image_gallery_from_url/core/ui/widgets/input_text.dart';
 import 'package:image_gallery_from_url/core/ui/widgets/primary_button.dart';
-import 'package:image_gallery_from_url/di/dependency_injection.dart';
 import 'package:image_gallery_from_url/features/upload/domain/entities/entities.dart';
 import 'package:image_gallery_from_url/features/upload/ui/bloc/upload_bloc.dart';
 import 'package:loader_overlay/loader_overlay.dart';
@@ -24,27 +23,21 @@ class UploadPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => UploadBloc(sl())
-        ..add(
-          LoadImagesEvent(),
-        ),
-      child: BlocListener<UploadBloc, UploadState>(
-        listener: _uploadListener,
-        child: Column(
-          children: const [
-            // Search bar
-            _SearchBar(),
+    return BlocListener<UploadBloc, UploadState>(
+      listener: _uploadListener,
+      child: Column(
+        children: const [
+          // Search bar
+          _SearchBar(),
 
-            // Preview image
-            Expanded(
-              child: _ImageView(),
-            ),
+          // Preview image
+          Expanded(
+            child: _ImageView(),
+          ),
 
-            // Image preview list
-            _ImagePreviewList()
-          ],
-        ),
+          // Image preview list
+          _ImagePreviewList()
+        ],
       ),
     );
   }
