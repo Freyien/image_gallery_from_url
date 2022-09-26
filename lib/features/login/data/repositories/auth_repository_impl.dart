@@ -15,7 +15,7 @@ class AuthRepositoryImpl implements AuthRepository {
 
     // Simulate server validation
     if (email != 'freyien@me.com') return Left(InvalidCredentialsFailure());
-    if (password != '123456') Left(InvalidCredentialsFailure());
+    if (password != '123456') return Left(InvalidCredentialsFailure());
 
     localDataBase.insert('session', {
       'is_logged': true,
