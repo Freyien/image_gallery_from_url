@@ -23,13 +23,19 @@ class GalleryPage extends StatelessWidget {
             crossAxisCount: 2,
             mainAxisSpacing: 8,
             crossAxisSpacing: 8,
-            pattern: [
-              const QuiltedGridTile(1, 2),
-              const QuiltedGridTile(1, 1),
-              const QuiltedGridTile(1, 1),
-              const QuiltedGridTile(1, 1),
-              const QuiltedGridTile(1, 1),
-            ],
+            repeatPattern: QuiltedGridRepeatPattern.same,
+            pattern: imageList.length.isEven
+                ? [
+                    const QuiltedGridTile(1, 1),
+                    const QuiltedGridTile(1, 1),
+                  ]
+                : [
+                    const QuiltedGridTile(1, 2),
+                    const QuiltedGridTile(1, 1),
+                    const QuiltedGridTile(1, 1),
+                    const QuiltedGridTile(1, 1),
+                    const QuiltedGridTile(1, 1),
+                  ],
           ),
           childrenDelegate: SliverChildBuilderDelegate(
             (context, index) {
