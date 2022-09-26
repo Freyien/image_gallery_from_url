@@ -3,12 +3,15 @@ import 'package:flutter/material.dart';
 import 'package:image_gallery_from_url/core/domain/entities/app_colors.dart';
 import 'package:image_gallery_from_url/core/ui/widgets/loading.dart';
 import 'package:image_gallery_from_url/di/dependency_injection.dart';
+import 'package:image_gallery_from_url/features/home/ui/home_page.dart';
 import 'package:image_gallery_from_url/features/login/ui/login_page.dart';
 import 'package:loader_overlay/loader_overlay.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
   // Init dependency injection
-  diInit();
+  await diInit();
 
   runApp(const LoaderOverlay());
 }
@@ -34,21 +37,18 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Material App',
-      initialRoute: 'login',
+      initialRoute: 'home',
       builder: BotToastInit(),
       routes: {
         'login': (_) => const LoginPage(),
-        'home': (_) => const Scaffold(
-              body: Center(
-                child: Text('Pending'),
-              ),
-            ),
+        'home': (_) => const HomePage()
       },
       navigatorObservers: [
         BotToastNavigatorObserver(),
       ],
       theme: ThemeData(
         primaryColor: AppColors.primary,
+        scaffoldBackgroundColor: AppColors.scaffold,
       ),
     );
   }
