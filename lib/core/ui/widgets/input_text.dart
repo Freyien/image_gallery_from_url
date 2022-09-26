@@ -16,6 +16,7 @@ class InputText extends StatelessWidget {
     this.contentPadding,
     this.initialValue,
     this.textInputAction = TextInputAction.next,
+    this.controller,
   }) : super(key: key);
 
   final String? labelText;
@@ -30,10 +31,12 @@ class InputText extends StatelessWidget {
   final EdgeInsetsGeometry? contentPadding;
   final String? initialValue;
   final TextInputAction? textInputAction;
+  final TextEditingController? controller;
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      controller: controller,
       obscureText: obscureText,
       enabled: enabled,
       initialValue: initialValue,
@@ -42,6 +45,8 @@ class InputText extends StatelessWidget {
       onChanged: onChanged,
       validator: validator,
       decoration: InputDecoration(
+        contentPadding:
+            const EdgeInsets.symmetric(vertical: 10.0, horizontal: 10.0),
         labelText: labelText,
         hintText: hintText,
         prefixIcon: prefixIcon,

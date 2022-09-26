@@ -8,33 +8,33 @@ abstract class LoginState {
 }
 
 class InitialState extends LoginState {
-  const InitialState(LoginFormEntity loginForm) : super(loginForm);
+  const InitialState(super.loginForm);
 }
 
 class EmailChangedState extends LoginState {
-  const EmailChangedState(LoginFormEntity loginForm) : super(loginForm);
+  const EmailChangedState(super.loginForm);
 }
 
 class PasswordChangedState extends LoginState {
-  const PasswordChangedState(LoginFormEntity loginForm) : super(loginForm);
+  const PasswordChangedState(super.loginForm);
 }
 
 class ShowPasswordChangedState extends LoginState {
-  const ShowPasswordChangedState(LoginFormEntity loginForm) : super(loginForm);
+  const ShowPasswordChangedState(super.loginForm);
 }
 
 class LoadingState extends LoginState {
-  const LoadingState(LoginFormEntity loginForm) : super(loginForm);
+  const LoadingState(super.loginForm);
 }
 
 class InvalidCredentialsState extends LoginState {
-  const InvalidCredentialsState(LoginFormEntity loginForm) : super(loginForm);
+  const InvalidCredentialsState(super.loginForm);
 }
 
 class FailedState extends LoginState {
-  const FailedState(LoginFormEntity loginForm) : super(loginForm);
+  const FailedState(super.loginForm);
 }
 
 class SuccessLoginState extends LoginState {
-  const SuccessLoginState(LoginFormEntity loginForm) : super(loginForm);
+  const SuccessLoginState(super.loginForm);
 }
