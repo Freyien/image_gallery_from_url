@@ -4,13 +4,13 @@ class PrimaryButton extends StatelessWidget {
   const PrimaryButton({
     Key? key,
     required this.text,
-    required this.onPressed,
+    this.onPressed,
     this.minimumWidth = double.infinity,
     this.minimumHeight = 55,
   }) : super(key: key);
 
   final String text;
-  final void Function() onPressed;
+  final void Function()? onPressed;
   final double minimumWidth;
   final double minimumHeight;
 

@@ -29,20 +29,9 @@ class _SearchBar extends StatelessWidget {
               const SizedBox(width: 8),
 
               // Upload button
-              PrimaryButton(
-                text: 'Cargar\nImagen',
-                onPressed: () {
-                  Keyboard.close(context);
-                  if (!key.currentState!.validate()) {
-                    return;
-                  }
-
-                  final bloc = context.read<UploadBloc>();
-                  bloc.add(UploadImageEvent());
-                },
-                minimumWidth: 0,
-                minimumHeight: 47,
-              ),
+              _UploadButton(
+                formKey: key,
+              )
             ],
           ),
         ),
@@ -75,14 +64,15 @@ class __SearchInputState extends State<_SearchInput> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocListener<UploadBloc, UploadState>(
+    return BlocConsumer<UploadBloc, UploadState>(
       listener: (context, state) {
         if (state is UrlClearedState) {
           controller.text = '';
         }
       },
-      child: InputText(
+      builder: (context, state) => InputText(
         controller: controller,
+        enabled: state.uploadEntity.isEnabledToUpload,
         hintText: 'URL de imagen',
         prefixIcon: const Icon(CupertinoIcons.link),
         textInputAction: TextInputAction.done,
@@ -101,6 +91,36 @@ class __SearchInputState extends State<_SearchInput> {
           }
         },
       ),
+    );
+  }
+}
+
+class _UploadButton extends StatelessWidget {
+  const _UploadButton({Key? key, required this.formKey}) : super(key: key);
+
+  final GlobalKey<FormState> formKey;
+
+  @override
+  Widget build(BuildContext context) {
+    return BlocBuilder<UploadBloc, UploadState>(
+      builder: (context, state) {
+        return PrimaryButton(
+          text: 'Cargar\nImagen',
+          onPressed: state.uploadEntity.isEnabledToUpload
+              ? () {
+                  Keyboard.close(context);
+                  if (!formKey.currentState!.validate()) {
+                    return;
+                  }
+
+                  final bloc = context.read<UploadBloc>();
+                  bloc.add(UploadImageEvent());
+                }
+              : null,
+          minimumWidth: 0,
+          minimumHeight: 47,
+        );
+      },
     );
   }
 }
