@@ -1,9 +1,9 @@
 # Image Gallery From Url
 
 Mobile application made with Flutter <3
-Upload images when an url, You must have internet connection for download and save in the device.
+Upload images from an url, You must have internet connection for download and save images in the device.
 
-Show your image data even if you dont have internet connection.
+Watch your uploaded images even if you dont have internet connection.
 
 # Preview
 
@@ -16,7 +16,7 @@ Youtube Video.
 # About project
 - Clean architecture
 - State management Bloc
-- Dependency injection with GetIt
+- Dependency injection with Get It
 - Android and iOS
 - Folder structure
     - Feature name
@@ -73,7 +73,7 @@ Youtube Video.
     - Alignment center
 
 - Get image data from local database
-    - You can see content with out internet when you previously update images
+    - You can see content without internet when you previously upload images
         - NOTE: For upload images you must have internet connection
 - Save images in device
 - Save record in local database
@@ -84,7 +84,7 @@ Youtube Video.
 
 # Pending Features
 
-### Log out:
+### Log out
 
 
 # Used packages
