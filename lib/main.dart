@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:image_gallery_from_url/core/domain/entities/app_colors.dart';
 import 'package:image_gallery_from_url/core/ui/widgets/loading.dart';
 import 'package:image_gallery_from_url/di/dependency_injection.dart';
+import 'package:image_gallery_from_url/features/app_config/ui/app_config.dart';
 import 'package:image_gallery_from_url/features/home/ui/home_page.dart';
 import 'package:image_gallery_from_url/features/login/ui/login_page.dart';
 import 'package:loader_overlay/loader_overlay.dart';
@@ -37,9 +38,10 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Material App',
-      initialRoute: 'home',
+      initialRoute: 'app_config',
       builder: BotToastInit(),
       routes: {
+        'app_config': (_) => const AppConfigPage(),
         'login': (_) => const LoginPage(),
         'home': (_) => const HomePage()
       },
