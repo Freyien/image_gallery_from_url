@@ -2,6 +2,9 @@ import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
 import 'package:image_gallery_from_url/di/local_database.dart';
+import 'package:image_gallery_from_url/features/app_config/data/repositories/app_config_repository_impl.dart';
+import 'package:image_gallery_from_url/features/app_config/domain/repositories/app_config_repository.dart';
+import 'package:image_gallery_from_url/features/app_config/ui/bloc/app_config_bloc.dart';
 import 'package:image_gallery_from_url/features/login/data/repositories/auth_repository_impl.dart';
 import 'package:image_gallery_from_url/features/login/domain/repositories/auth_repository.dart';
 import 'package:image_gallery_from_url/features/login/ui/bloc/login_bloc.dart';
@@ -40,10 +43,13 @@ void _registerNetwork() {
 // Repositories
 void _registerRepositories() {
   sl.registerLazySingleton<AuthRepository>(
-    () => AuthRepositoryImpl(),
+    () => AuthRepositoryImpl(sl()),
   );
   sl.registerLazySingleton<ImageRepository>(
     () => ImageRepositoryImpl(sl(), sl(), sl(), sl()),
+  );
+  sl.registerLazySingleton<AppConfigRepository>(
+    () => AppConfigRepositoryImpl(sl()),
   );
 }
 
@@ -51,4 +57,5 @@ void _registerRepositories() {
 void _registerBlocs() {
   sl.registerFactory(() => LoginBloc(sl()));
   sl.registerFactory(() => UploadBloc(sl()));
+  sl.registerFactory(() => AppConfigBloc(sl()));
 }
