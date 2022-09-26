@@ -24,4 +24,6 @@ class UploadEntity {
         imageList: imageList ?? this.imageList,
         selectedIndex: selectedIndex ?? this.selectedIndex,
       );
+
+  bool get isEnabledToUpload => imageList.length < maxImageLenght;
 }
